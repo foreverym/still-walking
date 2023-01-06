@@ -1,30 +1,24 @@
 package com.stillwalking.algorithms.cp2_sort;
 
+import javax.sound.sampled.Mixer;
+
 /**
- * @Description: 归并排序
- * 自顶向下的递归排序
+ * @Description: 自底向上的归并排序
  * @Author wyb
- * @Date 2023年01月06日 0:03  
+ * @Date 2023年01月07日 0:40  
  */
-public class Merge extends Example {
+public class MergeBU extends Example {
 
     Comparable[] aux = null;
 
-    public  void sort(Comparable[] a) {
+    public void sort(Comparable[] a) {
         int N = a.length;
         aux = new Comparable[N];
-        sort(a, 0, N - 1);
-
-    }
-
-    public  void sort(Comparable[] a, int lo, int hi) {
-        if (hi <= lo) {
-            return;
+        for (int sz = 1; sz < N; sz = sz + sz) {
+            for (int lo = 0; lo < N - sz; lo += sz + sz) {
+                merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1));
+            }
         }
-        int mid = lo + (hi - lo) / 2;
-        sort(a, lo , mid);
-        sort(a, mid + 1 , hi);
-        merge(a, lo, mid, hi);
     }
 
     public  void merge(Comparable[] a, int lo, int mid, int hi) {
@@ -48,9 +42,8 @@ public class Merge extends Example {
 
     public static void main(String[] args) {
         Integer[] array = new Integer[]{1, 4, 2, 5, 9, 3, 1, 89};
-        Merge merge = new Merge();
-        merge.sort(array);
-        merge.show(array);
+        MergeBU mergeBU = new MergeBU();
+        mergeBU.sort(array);
+        mergeBU.show(array);
     }
-
 }
