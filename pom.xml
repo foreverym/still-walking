@@ -11,6 +11,7 @@
         <module>the-art-of-java-concurrency-programming</module>
         <module>stillwalking-gateway</module>
         <module>algorithms</module>
+        <module>the-zen-of-design-patterns</module>
     </modules>
 
     <name>stillwalking</name>
