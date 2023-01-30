@@ -12,6 +12,7 @@
         <module>stillwalking-gateway</module>
         <module>algorithms</module>
         <module>the-zen-of-design-patterns</module>
+        <module>leetcode</module>
     </modules>
 
     <name>stillwalking</name>
